@@ -10,12 +10,14 @@ const authMiddleware = require('./Middleware/authMiddleware');
 const app = express();
 require('dotenv').config();
 
+const URL = process.env.URL;
+
 app.use(cors());
 app.use(express.json());
 
 const SECRET_KEY = process.env.SECRET_KEY;
 
-mongoose.connect('mongodb://localhost:27017/Tareas')
+mongoose.connect(URL)
     .then(()=>console.log('Conectado a MongoDB'))
     .catch((error)=> console.log('Error al conectarse a MongoDB',error))
 
